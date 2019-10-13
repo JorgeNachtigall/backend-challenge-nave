@@ -9,34 +9,46 @@ const jwtVerification = require('./utils/jwtVerification');
 
 router.post('/login', loginController.login);
 
-//list all admins
-router.get('/admin/all', jwtVerification, adminController.getAll);
-
-//show an specific admin info
-router.get('/admin/:user', jwtVerification, adminController.getAdmin);
-
 //create an admin user
-router.post('/admin/create', adminController.create);
-
-//list all candidates
-router.get('/candidate/all', jwtVerification, candidateController.getAll);
-
-//show an specific candidate info
-router.get('/candidate/:cpf', jwtVerification, candidateController.getCandidate);
+router.post('/account/create/admin', jwtVerification, adminController.create);
 
 //create an candidate user
-router.post('/candidate/create', jwtVerification, candidateController.create);
+router.post('/account/create/candidate', jwtVerification, candidateController.create);
 
-//list all vacancies
-router.get('/vacancy/all', vacancyController.getAll);
+//list all admins
+router.get('/account/show/admin/all', jwtVerification, adminController.showAll);
 
-//show an specific vacancy info
-router.get('/vacancy/:vacancyCode', vacancyController.getVacancy);
+//show an specific admin info
+router.get('/account/show/admin/:user', jwtVerification, adminController.showAdmin);
+
+//list all candidates
+router.get('/account/show/candidate/all', jwtVerification, candidateController.showAll);
+
+//show an specific candidate info
+router.get('/account/show/candidate/:cpf', jwtVerification, candidateController.showCandidate);
 
 //create a vacancy
 router.post('/vacancy/create', jwtVerification, vacancyController.create);
 
+//list all vacancies
+router.get('/vacancy/show/all', jwtVerification, vacancyController.showAll);
+
+//show an specific vacancy info
+router.get('/vacancy/show/:vacancyCode', jwtVerification, vacancyController.showVacancy);
+
 //set an user to an vacancy
-router.post('/admin/set/:cpf/:vacancyCode', jwtVerification, adminController.setCandidateToVacancy);
+router.post('/manage/vacancy/set/:cpf/:vacancyCode', jwtVerification, candidateController.setCandidateToVacancy);
+
+//create a comment to an candidature
+router.post('/comment/add/:idCandidature', jwtVerification, adminController.comment);
+
+//show all comments of an candidature
+router.get('/comment/show/:idCandidature', jwtVerification, adminController.showCandidatureCommentById);
+
+router.get('/candidatures/show/all', jwtVerification, adminController.showAllCandidatures);
+
+router.get('/candidatures/show/candidate/:cpf', jwtVerification, candidateController.showCandidaturesOfCandidate);
+
+router.get('/candidatures/show/vacancy/:vacancyCode', jwtVerification, vacancyController.showVacancyCandidatures);
 
 module.exports = router;

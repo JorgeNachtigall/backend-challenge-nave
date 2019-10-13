@@ -15,9 +15,13 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.19.5",
     "pg": "^7.12.1",
-    "pg-error-codes": "^1.1.0"
+    "pg-error-codes": "^1.1.0",
+    "randomstring": "^1.1.5"
   },
   "devDependencies": {
-    "nodemon": "^1.19.3"
+    "async-request": "^1.2.0",
+    "chai": "^4.2.0",
+    "nodemon": "^1.19.3",
+    "should": "^13.2.3"
   }
 }

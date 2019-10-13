@@ -20,6 +20,7 @@ function jwtVerify(req, res, next) {
                 }
             });
         }
+        req.user = decoded.payload;
         next();
     });
 }

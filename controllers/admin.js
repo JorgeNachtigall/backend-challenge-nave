@@ -1,33 +1,30 @@
-const errorCodes = require('pg-error-codes');
 const database = require('../config');
+const pgErrors = require('../utils/pgErrors');
 
 module.exports = {
-    async getAll(req, res) {
+    async showAll(req, res) {
         try {
             const data = await database.select().from('admin');
-            return res.json({ data: data });
+
+            if (data.length > 0)
+                return res.json({ data: data });
+
+            return res.json({ data: [] });
         } catch (error) {
-            return res.json({
-                'error': {
-                    code: error['code'],
-                    message: errorCodes[error['code']]
-                }
-            });
+            return res.json(pgErrors.info(error));
         }
     },
 
-    async getAdmin(req, res) {
+    async showAdmin(req, res) {
         try {
             const data = await database.select().from('admin').where('usuario', req.params.user);
-            return res.json({ data: data[0] });
-        } catch (error) {
-            return res.json({
-                'error': {
-                    code: error['code'],
-                    message: errorCodes[error['code']]
-                }
-            })
 
+            if (data.length > 0)
+                return res.json({ data: data[0] });
+
+            return res.json({ error: { message: 'User not found.' } });
+        } catch (error) {
+            return res.json(pgErrors.info(error));
         }
     },
 
@@ -36,41 +33,51 @@ module.exports = {
             const data = await database.insert(req.body).returning('*').into('admin');
             return res.json({ data: data[0] });
         } catch (error) {
-            return res.json({
-                'error': {
-                    code: error['code'],
-                    message: errorCodes[error['code']]
-                }
-            });
+            return res.json(pgErrors.info(error));
         }
     },
 
-    async setCandidateToVacancy(req, res) {
+    async comment(req, res) {
         try {
-            const candidate = await database.select('cpf').from('candidato').where('cpf', req.params.cpf);
-            const vacancy = await database.select('codigoVaga').from('vagas').where('codigoVaga', req.params.vacancyCode);
 
-            if (!candidate || !vacancy)
-                return res.json({
-                    error: {
-                        message: 'candidate_or_vacancy_not_registered'
-                    }
-                });
+            const insertData = {
+                adminUsuario: req.user,
+                comentario: req.body.comentario,
+                idCandidatura: req.params.idCandidature
+            };
 
-            const candidateApply = await database.insert({
-                cpfcandidato: candidate[0]['cpf'],
-                codigovaga: vacancy[0]['codigoVaga']
-            }).returning('*').into('vagascandidato');
+            const data = await database.insert(insertData).returning('*').into('comentarios');
 
-            return res.json({ data: candidateApply[0] });
+            return res.json({ data: data[0] });
 
         } catch (error) {
-            return res.json({
-                'error': {
-                    code: error['code'],
-                    message: errorCodes[error['code']]
-                }
-            });
+            return res.json(pgErrors.info(error));
         }
-    }
+    },
+
+    async showCandidatureCommentById(req, res) {
+        try {
+            const data = await database.select("adminUsuario", "comentario").from('comentarios').where('idCandidatura', req.params.idCandidature);
+
+            if (data.length > 0)
+                return res.json({ data: data });
+
+            return res.json({ error: { message: "There's no comments for this candidature" } });
+        } catch (error) {
+            return res.json(pgErrors.info(error));
+        }
+    },
+
+    async showAllCandidatures(req, res) {
+        try {
+            const data = await database.select().from('vagascandidato');
+
+            if (data.length > 0)
+                return res.json({ data: data });
+
+            return res.json({ error: { message: "There's no candidatures." } });
+        } catch (error) {
+            return res.json(pgErros.info(error));
+        }
+    },
 }
