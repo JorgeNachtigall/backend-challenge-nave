@@ -26,7 +26,6 @@ module.exports = {
 
             const authFailed = {
                 'error': {
-                    code: "401",
                     message: "wrong_password"
                 }
             }
