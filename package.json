@@ -21,6 +21,7 @@
   "devDependencies": {
     "async-request": "^1.2.0",
     "chai": "^4.2.0",
+    "mocha": "^6.2.1",
     "nodemon": "^1.19.3",
     "should": "^13.2.3"
   }
