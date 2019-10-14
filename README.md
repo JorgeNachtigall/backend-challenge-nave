@@ -14,7 +14,7 @@ Utilizei postgresql para o desenvolvimento do banco de dados. Há um dump (`nave
 
 ### Token
 
-Para a realização das requisições é necessário realizar o envio de um token através de um header chamado `token` (exemplos podem ser encontrados mais abaixo na documentação da API). Isso garante que somente usuários administradores poderão realizar as chamadas / fazer alterações no banco de dados.
+Para a realização das requisições é necessário realizar o envio de um token através de um header chamado `token` (exemplos podem ser encontrados mais abaixo na documentação da API). Isso garante que somente usuários administradores poderão realizar as chamadas / fazer alterações no banco de dados. O Token tem duração de 1 hora, até expirar.
 
 ### Testes
 Os pacotes utilizados nos testes estão na dev-dependencies do package.json. Para executar os testes, após instalar as dependências, basta executar o comando `mocha` na pasta raiz do projeto.
