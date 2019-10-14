@@ -68,19 +68,19 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
     **Content:** 
     ```javascript
     {
-	    "data": {
-		    "auth": true,
-		    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiam9yZ2UiLCJpYXQiOjE1NzEwMTE3MTMsImV4cCI6MTU3MTAxMjkxM30.MP9RIV4l_zOVwFvGHcdw3_wvFwCNAN-AUX2V4_WxgpI"
-		}
+       "data": {
+		"auth": true,
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiam9yZ2UiLCJpYXQiOjE1NzEwMTE3MTMsImV4cCI6MTU3MTAxMjkxM30.MP9RIV4l_zOVwFvGHcdw3_wvFwCNAN-AUX2V4_WxgpI"
 	}
-  ```
+    }
+    ```
  
 * **Error Response:**
 
     **Content:** `{
   "error": {
 	"code": "code_error"
-    "message": "message_error"
+    	"message": "message_error"
   }
 }`
 
@@ -88,9 +88,9 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 
  ```javascript
     {
-	    "usuario": "naveTeam",
-	    "senha": "admin"
-	}
+	"usuario": "naveTeam",
+	"senha": "admin"
+    }
   ```
 
 **Criar conta de administrador**
@@ -123,15 +123,15 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
+    ```javascript
     {
-	  "data": {
-			"usuario": "naveTeam",
-		    "nome": "Nave Team",
-		    "senha": "12345abcde"
-	  }
+   	"data": {
+		  "usuario": "naveTeam",
+		  "nome": "Nave Team",
+		  "senha": "12345abcde"
+	}
     }
-  ```
+    ```
  
 * **Error Response:**
 
@@ -145,15 +145,15 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 
 * **Body Sample Call:**
 
-  ```javascript
+    ```javascript
     {
-	  "data": {
-			"usuario": "naveTeam",
-		    "nome": "Nave Team",
-		    "senha": "12345abcde"
-	  }
+       "data": {
+		 "usuario": "naveTeam",
+		 "nome": "Nave Team",
+		 "senha": "12345abcde"
+       }
     }
-  ```
+    ```
 
 **Mostrar todos os usuários administradores**
 ----
@@ -183,20 +183,19 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-			"data": [
-			{
-		      "usuario": "OFI1c",
-		      "nome": "Nave Team",
-		      "senha": "admin"
-		    },
-		    {
-		      "usuario": "9WJ3D",
-		      "nome": "Nave Team",
-		      "senha": "admin"
-		    }]
-	}
+    ```javascript
+    {
+       "data": [{
+    		   "usuario": "OFI1c",
+		   "nome": "Nave Team",
+		   "senha": "admin"
+           	},
+            	{
+		   "usuario": "9WJ3D",
+		   "nome": "Nave Team",
+		   "senha": "admin"
+	}]
+    }
   ```
  
 * **Error Response:**
@@ -211,20 +210,19 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 
 * **Body Sample Call:**
 
- ```javascript
-	{
-			"data": [
-			{
-		      "usuario": "OFI1c",
-		      "nome": "Nave Team",
-		      "senha": "admin"
-		    },
-		    {
-		      "usuario": "9WJ3D",
-		      "nome": "Nave Team",
-		      "senha": "admin"
-		    }]
-	}
+    ```javascript
+    {
+       "data": [{
+		   "usuario": "OFI1c",
+		   "nome": "Nave Team",
+		   "senha": "admin"
+		},
+		{
+		   "usuario": "9WJ3D",
+		   "nome": "Nave Team",
+		   "senha": "admin"
+	}]
+    }
   ```
 
 **Mostrar usuário administrador por nome de usuário**
@@ -255,14 +253,14 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-			"data": {
-				"usuario": "naveTeam",
-				"nome": "nave team",
-			    "senha": "admin"
-			 }
+    ```javascript
+    {
+       "data": {
+	 	 "usuario": "naveTeam",
+		 "nome": "nave team",
+		 "senha": "admin"
 	}
+    }
   ```
  
 * **Error Response:**
@@ -310,15 +308,15 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-		"data": {
-			"cpf": "01234567899",
-		    "nome": "nomeCandidato",
-		    "email": "email@gmail.com",
-		    "telefone": "555399999999"
-	  }
+    ```javascript
+    {
+       "data": {
+		  "cpf": "01234567899",
+		  "nome": "nomeCandidato",
+		  "email": "email@gmail.com",
+		  "telefone": "555399999999"
 	}
+    }
   ```
  
 * **Error Response:**
@@ -333,15 +331,15 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 
 * **Body Sample Call:**
 
- ```javascript
-	{
-		"data": {
-			"cpf": "01234567899",
-		    "nome": "nomeCandidato",
-		    "email": "email@gmail.com",
-		    "telefone": "555399999999"
-	  }
-	}
+   ```javascript
+   {
+      "data": {
+      		 "cpf": "01234567899",
+		 "nome": "nomeCandidato",
+		 "email": "email@gmail.com",
+		 "telefone": "555399999999"
+       }
+    }
   ```
 
 **Mostrar todos os candidatos**
@@ -372,21 +370,21 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-			"data": [{
-				"cpf": "03952610735",
-			    "nome": "jorge nachtigall",
-				"email": "jorge@gmail.com",
-				"telefone": "5553987875412"
-		    },
-		    {
-				"cpf": "40592099042",
-				"nome": "Nave Team",
-				"email": "nave@nave.rs",
-				"telefone": "7380062098739"
-			}]
-	}
+    ```javascript
+    {
+       "data": [{
+       		   "cpf": "03952610735",
+		   "nome": "jorge nachtigall",
+		   "email": "jorge@gmail.com",
+		   "telefone": "5553987875412"
+		},
+		{
+		   "cpf": "40592099042",
+		   "nome": "Nave Team",
+		   "email": "nave@nave.rs",
+		   "telefone": "7380062098739"
+		}]
+    }
   ```
  
 * **Error Response:**
@@ -431,15 +429,15 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-			"data": {
-				"cpf": "01234567899",
-				"nome": "Nave Team",
-				"email": "nave@nave.rs",
-				"telefone": "9335877213665"
-			}
+    ```javascript
+    {
+       "data": {
+       		  "cpf": "01234567899",
+		  "nome": "Nave Team",
+		  "email": "nave@nave.rs",
+		  "telefone": "9335877213665"
 	}
+    }
   ```
  
 * **Error Response:**
@@ -487,16 +485,16 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-		"data": {
-			"cpf": "03952630735",
-		    "nome": "jorge nachtigall",
-		    "email": "jorge@gmail.com",
-		    "telefone": "5553987875412"
-	  }
+    ```javascript
+    {
+       "data": {
+       		  "cpf": "03952630735",
+		  "nome": "jorge nachtigall",
+		  "email": "jorge@gmail.com",
+		  "telefone": "5553987875412"
 	}
-  ```
+     }
+     ```
  
 * **Error Response:**
 
@@ -510,16 +508,16 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 
 * **Body Sample Call:**
 
- ```javascript
-	{
-		"data": {
-			"cpf": "03952630735",
-		    "nome": "jorge nachtigall",
-		    "email": "jorge@gmail.com",
-		    "telefone": "5553987875412"
-	  }
+    ```javascript
+    {
+       "data": {
+       		  "cpf": "03952630735",
+		  "nome": "jorge nachtigall",
+		  "email": "jorge@gmail.com",
+		  "telefone": "5553987875412"
 	}
-  ```
+    }
+    ```
 
 **Mostrar todas as vagas**
 ----
@@ -549,19 +547,19 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-			"data": [{
-				"nome": "back-end",
-				"quantidade": 5,
-				"codigovaga": "123"
-			},
-			{
-				"nome": "front-end",
-				"quantidade": 1,
-			"codigovaga": "456"
-		    }]
-	}
+    ```javascript
+    {
+       "data": [{
+       		   "nome": "back-end",
+		   "quantidade": 5,
+		   "codigovaga": "123"
+		},
+		{
+		   "nome": "front-end",
+		   "quantidade": 1,
+		   "codigovaga": "456"
+	}]
+    }
   ```
  
 * **Error Response:**
@@ -606,14 +604,14 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-		"data": {
-			"nome": "back-end",
-			"quantidade": 5,
-			"codigovaga": "123"
-		}
+    ```javascript
+    {
+    	"data": {
+		   "nome": "back-end",
+		   "quantidade": 5,
+		   "codigovaga": "123"
 	}
+    }
   ```
  
 * **Error Response:**
@@ -659,15 +657,15 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-			"data": {
-				"cpfcandidato": "72362347159",
-				"codigovaga": "123",
-				"idCandidatura": 142
-			}
+    ```javascript
+    {
+       "data": {
+       		  "cpfcandidato": "72362347159",
+		  "codigovaga": "123",
+		  "idCandidatura": 142
 	}
-  ```
+    }
+    ```
  
 * **Error Response:**
 
@@ -711,19 +709,19 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-			"data": [{
-				"cpfcandidato": "03952610735",
-				"codigovaga": "123",
-				"idCandidatura": 2
-			},
-		    {
-				"cpfcandidato": "72362347159",
-				"codigovaga": "123",
-				"idCandidatura": 142
-			}]
-	}
+    ```javascript
+    {
+       "data": [{
+       		   "cpfcandidato": "03952610735",
+		   "codigovaga": "123",
+		   "idCandidatura": 2
+		},
+		{
+		   "cpfcandidato": "72362347159",
+		   "codigovaga": "123",
+		   "idCandidatura": 142
+	}]
+    }
   ```
  
 * **Error Response:**
@@ -768,20 +766,20 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-		"data": [{
-			"cpfcandidato": "01234567899",
-			"codigovaga": "7845",
-			"idCandidatura": 7
+    ```javascript
+    {
+       "data": [{
+       		   "cpfcandidato": "01234567899",
+		   "codigovaga": "7845",
+		   "idCandidatura": 7
 		},
 		{
-			"cpfcandidato": "01234567899",
-			"codigovaga": "456",
-			"idCandidatura": 8
-		}]
-	}
-  ```
+		   "cpfcandidato": "01234567899",
+		   "codigovaga": "456",
+		   "idCandidatura": 8
+	}]
+    }
+    ```
  
 * **Error Response:**
 
@@ -825,20 +823,20 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-		"data": [{
-			"cpfcandidato": "01234567899",
-			"codigovaga": "7845",
-			"idCandidatura": 7
+    ```javascript
+    {
+       "data": [{
+       		   "cpfcandidato": "01234567899",
+		   "codigovaga": "7845",
+		   "idCandidatura": 7
 		},
 		{
-			"cpfcandidato": "01234567899",
-			"codigovaga": "456",
-			"idCandidatura": 8
-		}]
-	}
-  ```
+		   "cpfcandidato": "01234567899",
+		   "codigovaga": "456",
+		   "idCandidatura": 8
+	}]
+    }
+    ```
  
 * **Error Response:**
 
@@ -882,16 +880,16 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-		"data": {
-		"adminUsuario": "naveTeam",
-		"comentario": "Ok! Ótima entrevista!",
-		"idCandidatura": 117,
-		"id": 61
+    ```javascript
+    {
+       "data": {
+       		  "adminUsuario": "naveTeam",
+		  "comentario": "Ok! Ótima entrevista!",
+		  "idCandidatura": 117,
+		  "id": 61
 	}
-}
-  ```
+    }
+    ```
  
 * **Error Response:**
 
@@ -939,18 +937,18 @@ Toda chamada mal sucedida para a API retorna um objeto contendo um campo chamado
 * **Success Response:**
 
     **Content:** 
- ```javascript
-	{
-			"data": [{
-				"adminUsuario": "jorge",
-				"comentario": "Bom!"
-			},
-			{
-				"adminUsuario": "jorge",
-				"comentario": "Bom!"
-			}]
-	}
-  ```
+    ```javascript
+    {
+       "data": [{
+       		   "adminUsuario": "jorge",
+		   "comentario": "Bom!"
+		},
+		{
+		   "adminUsuario": "jorge",
+		   "comentario": "Bom!"
+	}]
+    }
+    ```
  
 * **Error Response:**
 
