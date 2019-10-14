@@ -22,7 +22,7 @@ module.exports = {
             if (data.length > 0)
                 return res.json({ data: data[0] });
 
-            return res.json({ error: { message: 'User not found.' } });
+            return res.json({ error: { code: 404, message: 'User not found.' } });
         } catch (error) {
             return res.json(pgErrors.info(error));
         }
@@ -41,9 +41,9 @@ module.exports = {
         try {
 
             const insertData = {
-                adminUsuario: req.user,
+                admin_usuario: req.user,
                 comentario: req.body.comentario,
-                idCandidatura: req.params.idCandidature
+                id_candidatura: req.params.idCandidature
             };
 
             const data = await database.insert(insertData).returning('*').into('comentarios');
@@ -57,12 +57,16 @@ module.exports = {
 
     async showCandidatureCommentById(req, res) {
         try {
-            const data = await database.select("adminUsuario", "comentario").from('comentarios').where('idCandidatura', req.params.idCandidature);
+            const candidature = await database.select('id_candidatura').from('vagascandidato').where('id_candidatura', req.params.idCandidature);
+            const data = await database.select("admin_usuario", "comentario").from('comentarios').where('id_candidatura', req.params.idCandidature);
+
+            if (candidature.length === 0)
+                return res.json({ error: { code: 404, message: "This candidature doesn't exists." } })
 
             if (data.length > 0)
                 return res.json({ data: data });
 
-            return res.json({ error: { message: "There's no comments for this candidature" } });
+            return res.json({ data: [] });
         } catch (error) {
             return res.json(pgErrors.info(error));
         }
@@ -75,7 +79,7 @@ module.exports = {
             if (data.length > 0)
                 return res.json({ data: data });
 
-            return res.json({ error: { message: "There's no candidatures." } });
+            return res.json({ data: [] });
         } catch (error) {
             return res.json(pgErros.info(error));
         }

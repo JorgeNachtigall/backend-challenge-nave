@@ -13,7 +13,7 @@ describe("> Testes de login", () => {
         try {
             const response = await request(urlBase + '/login', {
                 method: 'POST',
-                data: { user: "jorge", password: "admin" },
+                data: { usuario: "jorge", senha: "admin" },
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -43,7 +43,7 @@ describe("> Testes de login", () => {
         try {
             const response = await request(urlBase + '/login', {
                 method: 'POST',
-                data: { user: "", password: "admin" },
+                data: { usuario: "", senha: "admin" },
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -73,7 +73,7 @@ describe("> Testes de login", () => {
         try {
             const response = await request(urlBase + '/login', {
                 method: 'POST',
-                data: { user: "adm", password: "admin" },
+                data: { usuario: "adm", senha: "admin" },
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -103,7 +103,7 @@ describe("> Testes de login", () => {
         try {
             const response = await request(urlBase + '/login', {
                 method: 'POST',
-                data: { user: "adm", password: "" },
+                data: { usuario: "jorge", senha: "" },
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -133,7 +133,7 @@ describe("> Testes de login", () => {
         try {
             const response = await request(urlBase + '/login', {
                 method: 'POST',
-                data: { user: "jorge", password: "123" },
+                data: { usuario: "jorge", senha: "123" },
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -440,11 +440,11 @@ describe("> Testes de criação de candidatos", () => {
 });
 
 describe("> Testes de criação de vagas", () => {
-    it("Criação de uma vaga com um usuário administrador autenticado (passando token via header), deve retornar os campos de dados da vaga criada: nome, quantidade e codigoVaga.", async () => {
+    it("Criação de uma vaga com um usuário administrador autenticado (passando token via header), deve retornar os campos de dados da vaga criada: nome, quantidade e codigo da vaga.", async () => {
         try {
             const response = await request(urlBase + '/vacancy/create', {
                 method: 'POST',
-                data: { nome: randomstring.generate(5), quantidade: 1, codigovaga: randomstring.generate({ length: 5, charset: 'alphanumeric' }) },
+                data: { nome: randomstring.generate(5), quantidade: 1, codigo_vaga: randomstring.generate({ length: 5, charset: 'alphanumeric' }) },
                 headers: {
                     'Content-Type': 'application/json',
                     'token': accessToken
@@ -464,7 +464,7 @@ describe("> Testes de criação de vagas", () => {
             if (data.should.have.property('data')) {
                 expect(data['data']).to.have.property('nome');
                 expect(data['data']).to.have.property('quantidade');
-                expect(data['data']).to.have.property('codigovaga');
+                expect(data['data']).to.have.property('codigo_vaga');
             }
 
         }
@@ -477,7 +477,7 @@ describe("> Testes de criação de vagas", () => {
         try {
             const response = await request(urlBase + '/vacancy/create', {
                 method: 'POST',
-                data: { nome: randomstring.generate(5), quantidade: 1, codigoVaga: randomstring.generate({ length: 5, charset: 'alphanumeric' }) },
+                data: { nome: randomstring.generate(5), quantidade: 1, codigo_vaga: randomstring.generate({ length: 5, charset: 'alphanumeric' }) },
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -507,7 +507,7 @@ describe("> Testes de criação de vagas", () => {
         try {
             const response = await request(urlBase + '/vacancy/create', {
                 method: 'POST',
-                data: { nome: randomstring.generate(5), quantidade: 1, codigovaga: '123' },
+                data: { nome: randomstring.generate(5), quantidade: 1, codigo_vaga: '123' },
                 headers: {
                     'Content-Type': 'application/json',
                     'token': accessToken
@@ -538,7 +538,7 @@ describe("> Testes de criação de vagas", () => {
         try {
             const response = await request(urlBase + '/vacancy/create', {
                 method: 'POST',
-                data: { nome: randomstring.generate(5), quantidade: 1, codigovaga: '' },
+                data: { nome: randomstring.generate(5), quantidade: 1, codigo_vaga: '' },
                 headers: {
                     'Content-Type': 'application/json',
                     'token': accessToken
@@ -839,7 +839,7 @@ describe("> Testes de resgate de dados", () => {
             if (data.should.have.property('data')) {
                 expect(data['data'][0]).to.have.property('nome');
                 expect(data['data'][0]).to.have.property('quantidade');
-                expect(data['data'][0]).to.have.property('codigovaga');
+                expect(data['data'][0]).to.have.property('codigo_vaga');
             }
 
         }
@@ -871,7 +871,7 @@ describe("> Testes de resgate de dados", () => {
             if (expect(data).to.have.property('data')) {
                 expect(data['data']).to.have.property('nome');
                 expect(data['data']).to.have.property('quantidade');
-                expect(data['data']).to.have.property('codigovaga');
+                expect(data['data']).to.have.property('codigo_vaga');
             }
 
         }
@@ -1049,9 +1049,9 @@ describe("> Testes de resgate de dados", () => {
             }
 
             if (expect(data).to.have.property('data')) {
-                expect(data['data'][0]).to.have.property('cpfcandidato');
-                expect(data['data'][0]).to.have.property('codigovaga');
-                expect(data['data'][0]).to.have.property('idCandidatura');
+                expect(data['data'][0]).to.have.property('cpf_candidato');
+                expect(data['data'][0]).to.have.property('codigo_vaga');
+                expect(data['data'][0]).to.have.property('id_candidatura');
             }
 
         }
@@ -1081,9 +1081,9 @@ describe("> Testes de resgate de dados", () => {
             }
 
             if (expect(data).to.have.property('data')) {
-                expect(data['data'][0]).to.have.property('cpfcandidato');
-                expect(data['data'][0]).to.have.property('codigovaga');
-                expect(data['data'][0]).to.have.property('idCandidatura');
+                expect(data['data'][0]).to.have.property('cpf_candidato');
+                expect(data['data'][0]).to.have.property('codigo_vaga');
+                expect(data['data'][0]).to.have.property('id_candidatura');
             }
 
         }
@@ -1113,9 +1113,9 @@ describe("> Testes de resgate de dados", () => {
             }
 
             if (expect(data).to.have.property('data')) {
-                expect(data['data'][0]).to.have.property('cpfcandidato');
-                expect(data['data'][0]).to.have.property('codigovaga');
-                expect(data['data'][0]).to.have.property('idCandidatura');
+                expect(data['data'][0]).to.have.property('cpf_candidato');
+                expect(data['data'][0]).to.have.property('codigo_vaga');
+                expect(data['data'][0]).to.have.property('id_candidatura');
             }
 
         }
@@ -1165,7 +1165,7 @@ describe("> Teste de vinculação entre candidato e vaga (candidaturas).", () =>
         try {
             const response = await request(urlBase + '/vacancy/create', {
                 method: 'POST',
-                data: { nome: randomstring.generate(5), quantidade: 1, codigovaga: codVaga },
+                data: { nome: randomstring.generate(5), quantidade: 1, codigo_vaga: codVaga },
                 headers: {
                     'Content-Type': 'application/json',
                     'token': accessToken
@@ -1185,7 +1185,7 @@ describe("> Teste de vinculação entre candidato e vaga (candidaturas).", () =>
             if (data.should.have.property('data')) {
                 expect(data['data']).to.have.property('nome');
                 expect(data['data']).to.have.property('quantidade');
-                expect(data['data']).to.have.property('codigovaga');
+                expect(data['data']).to.have.property('codigo_vaga');
             }
 
         }
@@ -1194,7 +1194,7 @@ describe("> Teste de vinculação entre candidato e vaga (candidaturas).", () =>
         }
 
         try {
-            const response = await request(urlBase + '/manage/vacancy/set/' + cpfCandidato + '/' + codVaga, {
+            const response = await request(urlBase + '/candidatures/create/' + cpfCandidato + '/' + codVaga, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1213,9 +1213,9 @@ describe("> Teste de vinculação entre candidato e vaga (candidaturas).", () =>
             }
 
             if (data.should.have.property('data')) {
-                expect(data['data']).to.have.property('cpfcandidato');
-                expect(data['data']).to.have.property('codigovaga');
-                expect(data['data']).to.have.property('idCandidatura');
+                expect(data['data']).to.have.property('cpf_candidato');
+                expect(data['data']).to.have.property('codigo_vaga');
+                expect(data['data']).to.have.property('id_candidatura');
             }
         }
         catch (e) {
@@ -1261,7 +1261,7 @@ describe("> Teste de vinculação entre candidato e vaga (candidaturas).", () =>
         try {
             const response = await request(urlBase + '/vacancy/create', {
                 method: 'POST',
-                data: { nome: randomstring.generate(5), quantidade: 1, codigovaga: codVaga },
+                data: { nome: randomstring.generate(5), quantidade: 1, codigo_vaga: codVaga },
                 headers: {
                     'Content-Type': 'application/json',
                     'token': accessToken
@@ -1281,7 +1281,7 @@ describe("> Teste de vinculação entre candidato e vaga (candidaturas).", () =>
             if (data.should.have.property('data')) {
                 expect(data['data']).to.have.property('nome');
                 expect(data['data']).to.have.property('quantidade');
-                expect(data['data']).to.have.property('codigovaga');
+                expect(data['data']).to.have.property('codigo_vaga');
             }
         }
         catch (e) {
@@ -1289,7 +1289,7 @@ describe("> Teste de vinculação entre candidato e vaga (candidaturas).", () =>
         }
 
         try {
-            const response = await request(urlBase + '/manage/vacancy/set/' + cpfCandidato + '/' + codVaga, {
+            const response = await request(urlBase + '/candidatures/create/' + cpfCandidato + '/' + codVaga, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1318,7 +1318,7 @@ describe("> Teste de vinculação entre candidato e vaga (candidaturas).", () =>
 
     it("Vincular um candidato não existente à uma vaga. Não autenticado: deve retornar um objeto 'error' e uma mensagem de erro.", async () => {
         try {
-            const response = await request(urlBase + '/manage/vacancy/set/' + '1234567888' + '/' + '123', {
+            const response = await request(urlBase + '/candidatures/create/' + '1234567888' + '/' + '123', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1348,7 +1348,7 @@ describe("> Teste de vinculação entre candidato e vaga (candidaturas).", () =>
 
     it("Vincular um candidato à uma vaga não existente. Não autenticado: deve retornar um objeto 'error' e uma mensagem de erro.", async () => {
         try {
-            const response = await request(urlBase + '/manage/vacancy/set/' + '01234567899' + '/' + '00000', {
+            const response = await request(urlBase + '/candidatures/create/' + '01234567899' + '/' + '00000', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1418,7 +1418,7 @@ describe("> Testes de comentários", () => {
         try {
             const response = await request(urlBase + '/vacancy/create', {
                 method: 'POST',
-                data: { nome: randomstring.generate(5), quantidade: 1, codigovaga: codVaga },
+                data: { nome: randomstring.generate(5), quantidade: 1, codigo_vaga: codVaga },
                 headers: {
                     'Content-Type': 'application/json',
                     'token': accessToken
@@ -1438,7 +1438,7 @@ describe("> Testes de comentários", () => {
             if (data.should.have.property('data')) {
                 expect(data['data']).to.have.property('nome');
                 expect(data['data']).to.have.property('quantidade');
-                expect(data['data']).to.have.property('codigovaga');
+                expect(data['data']).to.have.property('codigo_vaga');
             }
 
         }
@@ -1447,7 +1447,7 @@ describe("> Testes de comentários", () => {
         }
 
         try {
-            const response = await request(urlBase + '/manage/vacancy/set/' + cpfCandidato + '/' + codVaga, {
+            const response = await request(urlBase + '/candidatures/create/' + cpfCandidato + '/' + codVaga, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1466,12 +1466,12 @@ describe("> Testes de comentários", () => {
             }
 
             if (data.should.have.property('data')) {
-                expect(data['data']).to.have.property('cpfcandidato');
-                expect(data['data']).to.have.property('codigovaga');
-                expect(data['data']).to.have.property('idCandidatura');
+                expect(data['data']).to.have.property('cpf_candidato');
+                expect(data['data']).to.have.property('codigo_vaga');
+                expect(data['data']).to.have.property('id_candidatura');
             }
 
-            codCandidatura = data['data']['idCandidatura'];
+            codCandidatura = data['data']['id_candidatura'];
 
         }
         catch (e) {
@@ -1479,7 +1479,7 @@ describe("> Testes de comentários", () => {
         }
 
         try {
-            const response = await request(urlBase + '/comment/add/' + codCandidatura, {
+            const response = await request(urlBase + '/comment/create/' + codCandidatura, {
                 method: 'POST',
                 data: { comentario: "Esse pessoa de nome aleatóriamente gerado passou para esta vaga com nome aleatóriamente gerado." },
                 headers: {
@@ -1499,9 +1499,9 @@ describe("> Testes de comentários", () => {
             }
 
             if (data.should.have.property('data')) {
-                expect(data['data']).to.have.property('adminUsuario');
+                expect(data['data']).to.have.property('admin_usuario');
                 expect(data['data']).to.have.property('comentario');
-                expect(data['data']).to.have.property('idCandidatura');
+                expect(data['data']).to.have.property('id_candidatura');
                 expect(data['data']).to.have.property('id');
             }
 
@@ -1514,6 +1514,7 @@ describe("> Testes de comentários", () => {
     it("Adiciona um comentário à uma candidatura. Não autenticado: deve retornar um objeto 'error' e uma mensagem de erro.", async () => {
         const cpfCandidato = randomstring.generate({ length: 11, charset: 'numeric' });
         const codVaga = randomstring.generate({ length: 5, charset: 'alphanumeric' });
+        let codCandidatura = '';
 
 
         try {
@@ -1551,7 +1552,7 @@ describe("> Testes de comentários", () => {
         try {
             const response = await request(urlBase + '/vacancy/create', {
                 method: 'POST',
-                data: { nome: randomstring.generate(5), quantidade: 1, codigovaga: codVaga },
+                data: { nome: randomstring.generate(5), quantidade: 1, codigo_vaga: codVaga },
                 headers: {
                     'Content-Type': 'application/json',
                     'token': accessToken
@@ -1571,7 +1572,7 @@ describe("> Testes de comentários", () => {
             if (data.should.have.property('data')) {
                 expect(data['data']).to.have.property('nome');
                 expect(data['data']).to.have.property('quantidade');
-                expect(data['data']).to.have.property('codigovaga');
+                expect(data['data']).to.have.property('codigo_vaga');
             }
 
         }
@@ -1581,7 +1582,7 @@ describe("> Testes de comentários", () => {
 
         //vincula o usuário à uma vaga
         try {
-            const response = await request(urlBase + '/manage/vacancy/set/' + cpfCandidato + '/' + codVaga, {
+            const response = await request(urlBase + '/candidatures/create/' + cpfCandidato + '/' + codVaga, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1600,12 +1601,12 @@ describe("> Testes de comentários", () => {
             }
 
             if (data.should.have.property('data')) {
-                expect(data['data']).to.have.property('cpfcandidato');
-                expect(data['data']).to.have.property('codigovaga');
-                expect(data['data']).to.have.property('idCandidatura');
+                expect(data['data']).to.have.property('cpf_candidato');
+                expect(data['data']).to.have.property('codigo_vaga');
+                expect(data['data']).to.have.property('id_candidatura');
             }
 
-            codCandidatura = data['data']['idCandidatura'];
+            codCandidatura = data['data']['id_candidatura'];
 
         }
         catch (e) {
@@ -1614,7 +1615,7 @@ describe("> Testes de comentários", () => {
 
         //adiciona comentário
         try {
-            const response = await request(urlBase + '/comment/add/' + codCandidatura, {
+            const response = await request(urlBase + '/comment/create/' + codCandidatura, {
                 method: 'POST',
                 data: { comentario: "Esse pessoa de nome aleatóriamente gerado passou para esta vaga com nome aleatóriamente gerado." },
                 headers: {
@@ -1645,7 +1646,7 @@ describe("> Testes de comentários", () => {
 
     it("Lista todos os comentários de uma candidatura. Se autenticado: retorna um objeto com um array 'data' onde cada elemento é um comentário e o administrador autor do comentário. Se não houver comentários, retorna o array data vazio.", async () => {
         try {
-            const response = await request(urlBase + '/comment/show/' + 2, {
+            const response = await request(urlBase + '/comment/show/' + 1, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1664,7 +1665,7 @@ describe("> Testes de comentários", () => {
             }
 
             if (data.should.have.property('data') && data['data'].length > 0) {
-                expect(data['data'][0]).to.have.property('adminUsuario');
+                expect(data['data'][0]).to.have.property('admin_usuario');
                 expect(data['data'][0]).to.have.property('comentario');
             }
 

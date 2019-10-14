@@ -1,8 +1,8 @@
 const knex = require('knex')({
     client: 'pg',
     connection: {
-        host: 'localhost',
-        database: 'nave'
+        host: process.env.HOST,
+        database: process.env.DATABASE
     }
 });
 

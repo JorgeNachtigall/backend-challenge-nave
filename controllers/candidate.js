@@ -22,7 +22,7 @@ module.exports = {
             if (data.length > 0)
                 return res.json({ data: data[0] });
 
-            return res.json({ error: { message: 'Candidate not found.' } });
+            return res.json({ error: { code: 404, message: 'Candidate not found.' } });
         } catch (error) {
             return res.json(pgErrors.info(error));
         }
@@ -39,12 +39,12 @@ module.exports = {
 
     async showCandidaturesOfCandidate(req, res) {
         try {
-            const data = await database.select().from('vagascandidato').where('cpfcandidato', req.params.cpf);
+            const data = await database.select().from('vagascandidato').where('cpf_candidato', req.params.cpf);
 
             if (data.length > 0)
                 return res.json({ data: data });
 
-            return res.json({ error: { message: "Candidate didn't apply for any vacancies." } });
+            return res.json({ data: [] });
         } catch (error) {
             return res.json(pgErrors.info(error));
         }
@@ -53,15 +53,15 @@ module.exports = {
     async setCandidateToVacancy(req, res) {
         try {
             const candidate = await database.select('cpf').from('candidato').where('cpf', req.params.cpf);
-            const vacancy = await database.select('codigovaga').from('vagas').where('codigovaga', req.params.vacancyCode);
+            const vacancy = await database.select('codigo_vaga').from('vagas').where('codigo_vaga', req.params.vacancyCode);
 
             if (!candidate[0] || !vacancy[0]) {
-                return res.json({ error: { message: 'candidate_or_vacancy_not_registered' } });
+                return res.json({ error: { code: 404, message: 'Candidate or vacancy not registered' } });
             }
 
             const insertData = {
-                cpfcandidato: candidate[0]['cpf'],
-                codigovaga: vacancy[0]['codigovaga']
+                cpf_candidato: candidate[0]['cpf'],
+                codigo_vaga: vacancy[0]['codigo_vaga']
             };
 
             const candidateApply = await database.insert(insertData).returning('*').into('vagascandidato');

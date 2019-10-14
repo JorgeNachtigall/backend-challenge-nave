@@ -37,10 +37,10 @@ router.get('/vacancy/show/all', jwtVerification, vacancyController.showAll);
 router.get('/vacancy/show/:vacancyCode', jwtVerification, vacancyController.showVacancy);
 
 //set an user to an vacancy
-router.post('/manage/vacancy/set/:cpf/:vacancyCode', jwtVerification, candidateController.setCandidateToVacancy);
+router.post('/candidatures/create/:cpf/:vacancyCode', jwtVerification, candidateController.setCandidateToVacancy);
 
 //create a comment to an candidature
-router.post('/comment/add/:idCandidature', jwtVerification, adminController.comment);
+router.post('/comment/create/:idCandidature', jwtVerification, adminController.comment);
 
 //show all comments of an candidature
 router.get('/comment/show/:idCandidature', jwtVerification, adminController.showCandidatureCommentById);
